@@ -27,9 +27,7 @@ target = Target.Target()
 
 head = Ball.node()
 ballList = []
-# cX = 0
-# cY = 0
-# cZ = 0
+
 
 def init():
 	mat_specular = [1.0, 1.0, 1.0, 0.0 ]
@@ -116,10 +114,6 @@ def processNormalKeys(bkey, x, y):
 	if key == chr(27) or key == 'q':
 		sys.exit()
 	elif key == 's':
-		# cX = float()
-		# cY = float()
-		# cZ = float()
-		# getCannonEndPts3D(angle1,angle2,cX,cY,cZ)
 		a = getCannonEndPts3D(angle1,angle2)
 		accel = maxAccel * (cannonL/maxCannonL)
 		stPt = Vector.Vector3D(a.GetX(), a.GetY()+curRadius, a.GetZ())
@@ -128,9 +122,6 @@ def processNormalKeys(bkey, x, y):
 		accelVec.selfNormalize()
 		accelVec.self_scale(accel)
 		AddBall(curRadius, stPt, vel, accelVec)
-	# elif key == 's':
-	# 	# RemoveAllNonMoving()
-	# 	print("w")
 	elif key == '1':
 		# print(cannonL)
 		cannonL -= 0.02
@@ -151,7 +142,6 @@ def processNormalKeys(bkey, x, y):
 			curRadius = maxRadius
 
 def processSpecialKeys(key, x, y):
-	# key = bkey.decode("utf-8")
 	global angle1
 	global angle2
 	if key == GLUT_KEY_UP:
@@ -216,21 +206,13 @@ def renderScene():
 
 	DrawAllBalls()
 	target.Draw()
-	# global cX
-	# global cY
-	# global cZ
+
 	cX = float()
 	cY = float()
 	cZ = float()
-	# print("before")
-	# print(cX)
-	# print(cY)
-	# print(cZ)
+
 	a = getCannonEndPts3D(angle1, angle2)
-	# print("after")
-	# print(cX)
-	# print(cY)
-	# print(cZ)
+
 	glColor3f(0, 0, 1)
 	glLineWidth(2)
 	glBegin(GL_LINES)
@@ -244,24 +226,12 @@ def renderScene():
 	glutSwapBuffers()
 
 def DrawAllBalls():
-	# tmp = head
-	# while tmp is not None:
-	# 	tmp.getBall().Draw()
-	# 	#tmp.ball.Draw()
-	# 	tmp = tmp.next
-	# a = Ball.Ball()
-	# a.SetValues(10, 10, 10, 10, 10)
-	# a.Draw()
 	size = len(ballList)
 	for i in ballList:
 		i.Draw()
 
 
 def UpdateAllBalls():
-	# tmp = head
-	# while tmp is not None:
-	# 	tmp.Update(dt)
-	# 	tmp = tmp.next
 	for i in ballList:
 		i.Update(dt)
 
@@ -271,17 +241,6 @@ def AddBall(_r, stPt, vel, accelVec):
 	newBall.SetValues(curRadius, stPt, vel, accelVec, bbx)
 	newBall.SetRandomColor()
 	ballList.append(newBall)
-	# global head
-	# newBall = Ball.node()
-	# newBall.ball.SetValues(curRadius, stPt, vel, accelVec, bbx)
-	# newBall.ball.SetRandomColor()
-	# newBall.next = head
-	# head = newBall
-
-
-
-
-
 
 cannon.Set_All(0, yPlane, 0)
 target.SetBBX(bbx)
