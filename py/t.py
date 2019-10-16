@@ -153,11 +153,11 @@ def processSpecialKeys(key, x, y):
 		if angle1 <= 0:
 			angle1 = 0
 	elif key == GLUT_KEY_LEFT:
-		angle2 += 1
+		angle2 += 7
 		if angle2 >= 270:
 			angle2 = 270
 	elif key == GLUT_KEY_RIGHT:
-		angle2 -= 1
+		angle2 -= 7
 		if angle2 <= 90:
 			angle2 = 90
 
@@ -232,15 +232,25 @@ def DrawAllBalls():
 
 
 def UpdateAllBalls():
-	for i in ballList:
-		i.Update(dt, ballList)
+    global ballList
+    for i in ballList:
+        i.Update(dt, ballList)
 
 def AddBall(_r, stPt, vel, accelVec):
 	global ballList
 	newBall = Ball.Ball()
 	newBall.SetValues(curRadius, stPt, vel, accelVec, bbx)
 	newBall.SetRandomColor()
-	ballList.append(newBall)
+	collision_stat = False
+	for i in range(len(ballList)):
+		if newBall.detect_collision(ballList[i]) == True and len(ballList) != 0:
+			collision_stat = True
+	
+	if collision_stat == False:
+		ballList.append(newBall)
+	else:
+		return
+	# ballList.append(newBall)
 
 cannon.Set_All(0, yPlane, 0)
 target.SetBBX(bbx)
@@ -248,7 +258,7 @@ target.SetBBX(bbx)
 glutInit()
 glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA)
 glutInitWindowPosition(100,100)
-glutInitWindowSize(320,320)
+glutInitWindowSize(600,600)
 glutCreateWindow("ShootPts")
 
 init()
