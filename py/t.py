@@ -233,7 +233,7 @@ def DrawAllBalls():
 
 def UpdateAllBalls():
 	for i in ballList:
-		i.Update(dt)
+		i.Update(dt, ballList)
 
 def AddBall(_r, stPt, vel, accelVec):
 	global ballList

@@ -44,7 +44,7 @@ class Ball:
         else:
             return False
 
-    def Update(self, dt):
+    def Update(self, dt, blist):
         self.center += self.velocity * dt
         oldVelocity = self.velocity
         self.velocity += self.accel * dt
@@ -54,7 +54,7 @@ class Ball:
         self.accel *= damping
 
         self.ResolveCollision()
-        self.resolve_ball_ball()
+        self.resolve_ball_ball(blist)
 
         if self.accel.norm() < 0.5:
             self.accel.Set_All(0, 0, 0)
@@ -115,13 +115,21 @@ class Ball:
         return self.center
     
     def resolve_ball_ball(self, ball_List : list):
-        for i in ball_List:
-            if self.detect_collision(ball_List[i] == True):
-                self.radius = 100
+        # for i in ball_List:
+        #     if self.detect_collision(i) == True and (self.center == i.center) == False:
+        #         self.color = Vector.Vector3D(0, 0, 0)
+        #         self.radius = 2
+        
+        for i in range(len(ball_List)):
+            for j in range(len(ball_List)):
+                if ball_List[i].detect_collision(ball_List[j]) == True and i != j :
+                    # self.color = Vector.Vector3D(0, 0, 0)
+                    # self.radius = 2
+            
 
-    def detect_collision(self, another_ball:
-        other_ball_radius = another_ball.get_center()
-        if (another_ball.get_center() - this.get_center()).norm() <= (self.radius * 2) :
+    def detect_collision(self, another_ball):
+        other_ball_radius = another_ball.center
+        if (another_ball.get_center() - self.get_center()).norm() <= (self.radius * 2) :
             return True
 
 
