@@ -28,7 +28,6 @@ target = Target.Target()
 head = Ball.node()
 ballList = []
 
-
 def init():
 	mat_specular = [1.0, 1.0, 1.0, 0.0 ]
 	mat_shininess = [10.0]
