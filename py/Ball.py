@@ -54,6 +54,7 @@ class Ball:
         self.accel *= damping
 
         self.ResolveCollision()
+        self.resolve_ball_ball()
 
         if self.accel.norm() < 0.5:
             self.accel.Set_All(0, 0, 0)
@@ -109,6 +110,20 @@ class Ball:
             self.velocity.SetZ(-1 * self.velocity.GetZ() )
             self.velocity *= collisionDumping
             self.accel *= collisionDumping
+
+    def get_center(self):
+        return self.center
+    
+    def resolve_ball_ball(self, ball_List : list):
+        for i in ball_List:
+            if self.detect_collision(ball_List[i] == True):
+                self.radius = 100
+
+    def detect_collision(self, another_ball:
+        other_ball_radius = another_ball.get_center()
+        if (another_ball.get_center() - this.get_center()).norm() <= (self.radius * 2) :
+            return True
+
 
 
 class node:
