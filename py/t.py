@@ -28,6 +28,9 @@ target = Target.Target()
 head = Ball.node()
 ballList = []
 
+view_one = 0
+view_two = 0
+view_three = 10
 
 def init():
 	mat_specular = [1.0, 1.0, 1.0, 0.0 ]
@@ -110,6 +113,7 @@ def drawBBX():
 def processNormalKeys(bkey, x, y):
 	global cannonL
 	global curRadius
+	global view_one, view_two, view_three
 	key = bkey.decode("utf-8")
 	if key == chr(27) or key == 'q':
 		sys.exit()
@@ -140,6 +144,15 @@ def processNormalKeys(bkey, x, y):
 		curRadius += 0.2
 		if curRadius > maxRadius:
 			curRadius = maxRadius
+	elif key == 'j':
+		view_one += 1
+	elif key == 'i':
+		view_two += 1
+	elif key == 'n':
+		view_three += 1
+	elif key == 'm':
+		view_three -= 1
+
 
 def processSpecialKeys(key, x, y):
 	global angle1
@@ -190,7 +203,7 @@ def renderScene():
 
 	glLoadIdentity()
 
-	gluLookAt(float(0.0), float(0.0), float(10.0), float(0.0),float(0.0), float(0.0), float(0.0), float(1.0), float(0.0))
+	gluLookAt(float(view_one), float(view_two), float(view_three), float(0.0),float(0.0), float(0.0), float(0.0), float(1.0), float(0.0))
 
 	glEnable(GL_LIGHTING)
 	glEnable(GL_LIGHT0)

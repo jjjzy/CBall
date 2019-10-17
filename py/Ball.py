@@ -115,17 +115,18 @@ class Ball:
         return self.center
     
     def resolve_ball_ball(self, ball_List : list):
+        ball_List_dup = ball_List
         # for i in ball_List:
         #     if self.detect_collision(i) == True and (self.center == i.center) == False:
         #         self.color = Vector.Vector3D(0, 0, 0)
         #         self.radius = 2
         
-        for i in range(len(ball_List)):
-            for j in range(len(ball_List)):
-                ball_one = ball_List[i]
+        for i in range(len(ball_List_dup)):
+            for j in range(len(ball_List_dup)):
+                ball_one = ball_List_dup[i]
                 # ball_one_vel = ball_one.velocity
                 # ball_one_accel = ball_one.accel
-                ball_two = ball_List[j]
+                ball_two = ball_List_dup[j]
                 # ball_two_vel = ball_two.velocity
                 # ball_two_accel = ball_two.accel
                 if ball_one.detect_collision(ball_two) == True and i != j :
@@ -159,6 +160,15 @@ class Ball:
                     # ball_two.velocity = -v
                     # ball_one.velocity = Vector.Vector3D(15, 15, 15)
                     # ball_two.velocity = Vector.Vector3D(-15, -15, -15)
+
+
+                    new_one_velo = ball_two.velocity
+                    new_two_velo = ball_one.velocity
+
+                    # ball_one.velocity = new_one_velo
+                    # ball_two.velocity = new_two_velo
+                    # ball_one.velocity += Vector.Vector3D(0, 10, 0)
+                    # ball_List_dup.remove(ball_one)
 
     def detect_collision(self, another_ball):
         other_ball_radius = another_ball.center
