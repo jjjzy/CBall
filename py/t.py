@@ -273,10 +273,10 @@ glutCreateWindow("ShootPts")
 
 init()
 
-glutDisplayFunc(renderScene);
-glutReshapeFunc(changeSize);
-glutIdleFunc(renderScene);
+glutDisplayFunc(renderScene)
+glutReshapeFunc(changeSize)
+glutIdleFunc(renderScene)
 
-glutKeyboardFunc(processNormalKeys);
-glutSpecialFunc(processSpecialKeys);
+glutKeyboardFunc(processNormalKeys)
+glutSpecialFunc(processSpecialKeys)
 glutMainLoop()
