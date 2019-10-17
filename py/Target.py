@@ -46,7 +46,7 @@ class Target:
             self.color.SetY(random.random())
             self.color.SetZ(random.random())
             self.deltaX *= 1.05
-        print("hit is ", hit)
+        # print("hit is ", hit)
         
     def Draw(self):
         glColor3f(self.color.GetX(),self.color.GetY(),self.color.GetZ())

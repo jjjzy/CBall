@@ -223,6 +223,10 @@ def renderScene():
 	UpdateAllBalls()
 	target.Update(ballList)
 
+	for i in range(len(ballList)):
+		print("ball ", i + 1, "'s velocity: ")
+		ballList[i].velocity.print_vec()
+
 	glutSwapBuffers()
 
 def DrawAllBalls():
@@ -233,8 +237,14 @@ def DrawAllBalls():
 
 def UpdateAllBalls():
     global ballList
-    for i in ballList:
-        i.Update(dt, ballList)
+    for i in range(len(ballList)):
+        ballList[i].Update(dt, ballList)
+        # print("ball ", i + 1, "'s velocity: ")
+        # ballList[i].velocity.print_vec()
+        # print(rt_val[1])
+        # rt_val[0].print_vec()
+        # ballList[rt_val[3]].velocity.assign_val(rt_val[0], rt_val[1], rt_val[2])
+        # ballList[0].velocity.assign_val(15, 15, 15)
 
 def AddBall(_r, stPt, vel, accelVec):
 	global ballList
