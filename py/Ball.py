@@ -123,28 +123,42 @@ class Ball:
         for i in range(len(ball_List)):
             for j in range(len(ball_List)):
                 ball_one = ball_List[i]
-                ball_one_vel = ball_one.velocity
-                ball_one_accel = ball_one.accel
+                # ball_one_vel = ball_one.velocity
+                # ball_one_accel = ball_one.accel
                 ball_two = ball_List[j]
-                ball_two_vel = ball_two.velocity
-                ball_two_accel = ball_two.accel
+                # ball_two_vel = ball_two.velocity
+                # ball_two_accel = ball_two.accel
                 if ball_one.detect_collision(ball_two) == True and i != j :
+                    # ball_one = ball_List[i]
+                    # ball_one_vel = ball_one.velocity
+                    # ball_one_accel = ball_one.accel
+                    # ball_two = ball_List[j]
+                    # ball_two_vel = ball_two.velocity
+                    # ball_two_accel = ball_two.accel
                     # self.color = Vector.Vector3D(0, 0, 0)
                     # self.radius = 2
-                    # ball_one.velocity = ball_two_vel
-                    # ball_one.accel = ball_two_accel
-                    # ball_two.velocity = ball_one_vel
+                    # print("ball 1 vel norm before: ")
+                    # print(-ball_one.velocity.norm())
+                    # ball_one.velocity = -ball_one.velocity
+                    # print("ball 1 vel norm after: ")
+                    # print(-ball_one.velocity.norm())
+                    # # ball_one.accel = ball_two_accel
+                    # ball_two.velocity = -ball_two.velocity
                     # ball_two.accel = ball_one_accel
                     # ball_one.velocity = - ball_one.velocity
+                    # print("ball 2 vel norm before: ")
+                    # print(ball_one.velocity.norm())
                     # ball_two.velocity = - ball_two.velocity
+                    # print("ball 2 vel norm after: ")
+                    # print(ball_two.velocity.norm())
                     # v = Vector.Vector3D(5, 5, 5)
                     # ball_one.accel = v
                     # ball_one.velocity = ball_one_vel + Vector.Vector3D(0, 10, 0)
                     
                     # ball_two.accel = -v
                     # ball_two.velocity = -v
-                    ball_one.velocity = Vector.Vector3D(5, 5, 5)
-                    ball_two.velocity = Vector.Vector3D(-5, -5, -5)
+                    # ball_one.velocity = Vector.Vector3D(15, 15, 15)
+                    # ball_two.velocity = Vector.Vector3D(-15, -15, -15)
 
     def detect_collision(self, another_ball):
         other_ball_radius = another_ball.center
