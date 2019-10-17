@@ -163,7 +163,8 @@ class Ball:
     def resolve_ball_ball(self, ball_List : list):
         for i in range(len(ball_List)):
             if self.detect_collision(ball_List[i]) == True and self.center != ball_List[i].center :
-                self.velocity += Vector.Vector3D(0, 15, 0)
+                self.velocity = -ball_List[i].velocity
+                
 
     def detect_collision(self, another_ball):
         other_ball_radius = another_ball.center
