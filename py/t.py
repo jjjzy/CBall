@@ -238,11 +238,11 @@ def DrawAllBalls():
 def UpdateAllBalls():
     global ballList
     for i in range(len(ballList)):
-        my_t = ballList[i].Update(dt, ballList)
+        ballList[i].Update(dt, ballList)
         # print(my_t[0])
         # print(my_t[1])
-        ballList[my_t[0]].velocity = my_t[1]
-        ballList[my_t[2]].velocity = my_t[3]
+        # ballList[my_t[0]].velocity = my_t[1]
+        # ballList[my_t[2]].velocity = my_t[3]
         # print("ball ", i + 1, "'s velocity: ")
         # ballList[i].velocity.print_vec()
         # print(rt_val[1])

@@ -57,7 +57,7 @@ class Ball:
         self.accel *= damping
 
         self.ResolveCollision()
-        myt = self.resolve_ball_ball(blist)
+        self.resolve_ball_ball(blist)
 
         if self.accel.norm() < 0.5:
             self.accel.Set_All(0, 0, 0)
@@ -65,7 +65,7 @@ class Ball:
             self.velocity.Set_All(0, 0, 0)
         # print(type(rt_val))
         # print(rt_val[0])
-        return myt
+        # return myt
 
     def Draw(self):
         glColor3f(self.color.GetX(), self.color.GetY(), self.color.GetZ())
@@ -141,11 +141,11 @@ class Ball:
                 # print("collide")
                 
                 # v_one.SetY(0)
-                v_one = self.velocity
-                v_one.SetY(0)
-                v_two = ball_List[i].velocity
-                v_two.SetY(0)
-                return tuple((index, v_two, i, v_one))
+                # v_one = self.velocity
+                # v_one.SetY(0)
+                # v_two = ball_List[i].velocity
+                # v_two.SetY(0)
+                # return tuple((index, v_two, i, v_one))
                 # v_two.SetY(0)
                 # print("ball ", i, " velocity: ")
                 # v_one.print_vec()
@@ -160,8 +160,8 @@ class Ball:
                 # ball_List[i].velocity = Vector.Vector3D(3, 10, -3)
                 # ball_List[i].velocity = Vector.Vector3D(15, 15,15)
             #     return [v_one.GetX(), v_one.GetY(), v_one.GetZ(), i]
-            else:
-                return tuple((index, self.velocity, i, ball_List[i].velocity))
+            # else:
+            #     return tuple((index, self.velocity, i, ball_List[i].velocity))
 
     def detect_collision(self, another_ball):
         other_ball_radius = another_ball.center
