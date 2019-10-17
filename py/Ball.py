@@ -148,8 +148,8 @@ class Ball:
                 # ball_List[i].color = Vector.Vector3D(0, 0, 0)
                 # ball_List[i].velocity += Vector.Vector3D(15, 0, 0)
                 # self.color = Vector.Vector3D(1, 1, 1)
-                self.velocity = v_two
-                
+                self.velocity = Vector.Vector3D(3, 0, 3)
+                ball_List[i].velocity = Vector.Vector3D(3, 10, -3)
                 # ball_List[i].velocity = Vector.Vector3D(15, 15,15)
             #     return [v_one.GetX(), v_one.GetY(), v_one.GetZ(), i]
             # else:
