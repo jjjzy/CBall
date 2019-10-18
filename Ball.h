@@ -18,6 +18,7 @@ class Ball {
     void ResolveCollision();
     Vector3d GetCenter() { return center; }
     void Draw();
+    Vector3d get_velocity(){return velocity;}
   private:
     Vector3d center;
     Vector3d velocity;

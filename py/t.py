@@ -119,6 +119,7 @@ def processNormalKeys(bkey, x, y):
 		stPt = Vector.Vector3D(a.GetX(), a.GetY()+curRadius, a.GetZ())
 		vel = Vector.Vector3D(0, 0, 0)
 		accelVec = Vector.Vector3D(a.GetX()-cannon.GetX(),a.GetY()-cannon.GetY(),a.GetZ()-cannon.GetZ())
+
 		accelVec.selfNormalize()
 		accelVec.self_scale(accel)
 		AddBall(curRadius, stPt, vel, accelVec)
@@ -190,7 +191,7 @@ def renderScene():
 
 	glLoadIdentity()
 
-	gluLookAt(float(0.0), float(0.0), float(10.0), float(0.0),float(0.0), float(0.0), float(0.0), float(1.0), float(0.0))
+	gluLookAt(0, 0, 10, 0, 0, 0, 0, 1, 0)
 
 	glEnable(GL_LIGHTING)
 	glEnable(GL_LIGHT0)
@@ -241,10 +242,10 @@ def UpdateAllBalls():
         ballList[i].Update(dt, ballList)
         # print(my_t[0])
         # print(my_t[1])
-        # ballList[my_t[0]].velocity = my_t[1]
-        # ballList[my_t[2]].velocity = my_t[3]
+        # ballList[0].velocity.assign_vec(Vector.Vector3D(5, 5, 5))
+        # ballList[my_t[2]].velocity.assign_vec(my_t[3])
         # print("ball ", i + 1, "'s velocity: ")
-        # ballList[i].velocity.print_vec()
+        # ballList[i].center.print_vec()
         # print(rt_val[1])
         # rt_val[0].print_vec()
         # ballList[rt_val[3]].velocity.assign_val(rt_val[0], rt_val[1], rt_val[2])

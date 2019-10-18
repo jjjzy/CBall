@@ -57,7 +57,8 @@ class Ball:
         self.accel *= damping
 
         self.ResolveCollision()
-        self.resolve_ball_ball(blist)
+        for i in blist:
+            self.resolve_ball_ball(i)
 
         if self.accel.norm() < 0.5:
             self.accel.Set_All(0, 0, 0)
@@ -66,12 +67,14 @@ class Ball:
         # print(type(rt_val))
         # print(rt_val[0])
         # return myt
+        # return rt_val
+        # return my_t
 
     def Draw(self):
         glColor3f(self.color.GetX(), self.color.GetY(), self.color.GetZ())
         glPushMatrix()
         glTranslated(self.center.GetX(), self.center.GetY(), self.center.GetZ())
-        glutSolidSphere(self.radius, 10, 10)
+        glutSolidSphere(self.radius, 10000, 10000)
         glPopMatrix()
 
     def ResolveCollision(self):
@@ -89,12 +92,19 @@ class Ball:
             self.velocity *= collisionDumping
             self.accel *= collisionDumping
 
-        if self.center.GetY() - self.radius < self.bbx[2]:
+        if self.center.GetY() - self.radius <= self.bbx[2]:
             oldCenterX = self.center.GetY()
             self.center.SetY(self.bbx[2] + self.radius)
             self.velocity.SetY(-1 * self.velocity.GetY() )
+            # self.velocity *= -1
             self.velocity *= collisionDumping
             self.accel *= collisionDumping
+            # if self.accel.norm() < 0.5:
+            #     self.accel.Set_All(0, 0, 0)
+            # if self.velocity.norm() < 0.1:
+            #     self.velocity.Set_All(0, 0, 0)
+            # if self.accel.GetY() < 0.5:
+            #     self.accel.SetY(0)
 
         if self.center.GetY() + self.radius > self.bbx[3]:
             oldCenterX = self.center.GetY()
@@ -102,6 +112,7 @@ class Ball:
             self.velocity.SetY(-1 * self.velocity.GetY() )
             self.velocity *= collisionDumping
             self.accel *= collisionDumping
+            
 
         if self.center.GetZ() - self.radius < self.bbx[4]:
             oldCenterX = self.center.GetZ()
@@ -126,46 +137,28 @@ class Ball:
     #             if self.detect_collision(ball_two) == True and i != j :
                     
 
-    def resolve_ball_ball(self, ball_List : list):
-        
-        # global ball_List
-        index = 0
-        v_x = 0
-        v_y = 0
-        for i in range(len(ball_List)):
-            # v_one = self.velocity
-            # v_two = ball_List[i].velocity
-            if self.center == ball_List[i].center :
-                index = i
-            if self.detect_collision(ball_List[i]) == True and self.center != ball_List[i].center :
-                # print("collide")
-                
-                # v_one.SetY(0)
-                # v_one = self.velocity
-                # v_one.SetY(0)
-                # v_two = ball_List[i].velocity
-                # v_two.SetY(0)
-                # return tuple((index, v_two, i, v_one))
-                # v_two.SetY(0)
-                # print("ball ", i, " velocity: ")
-                # v_one.print_vec()
-                # print("the other's velocity")
-                # v_two.print_vec()
-                # print(" ")
-                # ball_List[i].velocity = Vector.Vector3D(15, 15, 15)
-                # ball_List[i].color = Vector.Vector3D(0, 0, 0)
-                # ball_List[i].velocity += Vector.Vector3D(15, 0, 0)
-                # self.color = Vector.Vector3D(1, 1, 1)
-                # self.velocity = Vector.Vector3D(3, 0, 3)
-                # ball_List[i].velocity = Vector.Vector3D(3, 10, -3)
-                # ball_List[i].velocity = Vector.Vector3D(15, 15,15)
-            #     return [v_one.GetX(), v_one.GetY(), v_one.GetZ(), i]
-            # else:
-            #     return tuple((index, self.velocity, i, ball_List[i].velocity))
+    def resolve_ball_ball(self, _another):
+        if self.detect_collision(_another) and self != _another: 
+            _vel_one = self.velocity
+            # _vel_one.SetY(0)
+            _vel_two = _another.velocity
+            # _vel_two.SetY(0)
+            _accel_one = self.accel
+            # _accel_one.SetY(0)
+            _accel_two = _another.accel
+            # _accel_two.SetY(0)
+            # _vel_sum = _vel_one + _vel_two
+            
+            _another.velocity = _vel_one
+            _another.accel = _accel_one
+            self.velocity = _vel_two
+            self.accel = _accel_two
+            print("inside")
+            
 
     def detect_collision(self, another_ball):
         other_ball_radius = another_ball.center
-        if abs((another_ball.get_center() - self.get_center()).norm()) - (self.radius * 2) < 0.001:
+        if abs((another_ball.get_center() - self.get_center()).norm()) - (self.radius * 2) <= 0.0001:
             
             return True
         # else:
