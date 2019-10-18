@@ -264,6 +264,7 @@ def AddBall(_r, stPt, vel, accelVec):
 	if collision_stat == False:
 		ballList.append(newBall)
 	else:
+		print("CANT SHOOT!!!!")
 		return
 	# ballList.append(newBall)
 

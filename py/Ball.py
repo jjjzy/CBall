@@ -144,9 +144,9 @@ class Ball:
             _vel_two = _another.velocity
             # _vel_two.SetY(0)
             _accel_one = self.accel
-            # _accel_one.SetY(0)
+            _accel_one.SetY(0)
             _accel_two = _another.accel
-            # _accel_two.SetY(0)
+            _accel_two.SetY(0)
             # _vel_sum = _vel_one + _vel_two
             
             _another.velocity = _vel_one
