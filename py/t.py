@@ -267,14 +267,14 @@ def AddBall(_r, stPt, vel, accelVec):
 		print("CANT SHOOT!!!!")
 		return
 	# ballList.append(newBall)
-
+ 
 cannon.Set_All(0, yPlane, 0)
 target.SetBBX(bbx)
 
 glutInit()
 glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA)
 glutInitWindowPosition(100,100)
-glutInitWindowSize(600,600)
+glutInitWindowSize(320,320)
 glutCreateWindow("ShootPts")
 
 init()
