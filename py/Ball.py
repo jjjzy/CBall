@@ -74,7 +74,7 @@ class Ball:
         glColor3f(self.color.GetX(), self.color.GetY(), self.color.GetZ())
         glPushMatrix()
         glTranslated(self.center.GetX(), self.center.GetY(), self.center.GetZ())
-        glutSolidSphere(self.radius, 10000, 10000)
+        glutSolidSphere(self.radius, 100, 100)
         glPopMatrix()
 
     def ResolveCollision(self):
@@ -150,19 +150,19 @@ class Ball:
             # _vel_sum = _vel_one + _vel_two
             
             _another.velocity = _vel_one
-            # _another.accel = _accel_one
+            _another.accel = _accel_one
             self.velocity = _vel_two
-            # self.accel = _accel_two
+            self.accel = _accel_two
             print("inside")
             
 
     def detect_collision(self, another_ball):
         other_ball_radius = another_ball.center
         if abs((another_ball.get_center() - self.get_center()).norm()) - (self.radius * 2) <= 0.0001:
-            
+            # if self != another_ball:
             return True
-        # else:
-        #     return True
+        else:
+            return False
 
 
 
