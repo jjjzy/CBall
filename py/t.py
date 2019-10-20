@@ -267,7 +267,7 @@ def AddBall(_r, stPt, vel, accelVec):
 		print("CANT SHOOT!!!!")
 		return
 	# ballList.append(newBall)
- 
+
 cannon.Set_All(0, yPlane, 0)
 target.SetBBX(bbx)
 
