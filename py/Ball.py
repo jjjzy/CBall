@@ -150,9 +150,9 @@ class Ball:
             # _vel_sum = _vel_one + _vel_two
             
             _another.velocity = _vel_one
-            _another.accel = _accel_one
+            # _another.accel = _accel_one
             self.velocity = _vel_two
-            self.accel = _accel_two
+            # self.accel = _accel_two
             print("inside")
             
 
