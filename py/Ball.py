@@ -60,9 +60,9 @@ class Ball:
         for i in blist:
             self.resolve_ball_ball(i)
 
-        if self.accel.norm() < 0.5:
+        if self.accel.norm() < 1:
             self.accel.Set_All(0, 0, 0)
-        if self.velocity.norm() < 0.5:
+        if self.velocity.norm() < 1:
             self.velocity.Set_All(0, 0, 0)
         # print(type(rt_val))
         # print(rt_val[0])
