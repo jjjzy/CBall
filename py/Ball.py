@@ -171,6 +171,12 @@ class Ball:
             # self.accel = _accel_two
             print("inside")
             
+            # _another.velocity = (_vel_one + _vel_two)/2
+            # # _another.accel = _accel_one
+            # self.velocity = -(_vel_one + _vel_two)/2
+            # # self.accel = _accel_two
+
+
 
     def detect_collision(self, another_ball):
         other_ball_radius = another_ball.center
