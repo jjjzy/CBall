@@ -4,6 +4,7 @@ from OpenGL.GL import *
 import Vector
 import Ball
 import Target
+import math
 
 bbx = [-20,20,-4,20,-100,100]
 yPlane = -4
@@ -28,6 +29,13 @@ target = Target.Target()
 head = Ball.node()
 ballList = []
 
+r = 600 / 3
+theta = 0.1
+phi = 0.1
+
+xx = 0
+yy = 0
+zz = 10
 
 def init():
 	mat_specular = [1.0, 1.0, 1.0, 0.0 ]
@@ -110,6 +118,8 @@ def drawBBX():
 def processNormalKeys(bkey, x, y):
 	global cannonL
 	global curRadius
+	global r, theta
+	global xx, yy, zz
 	key = bkey.decode("utf-8")
 	if key == chr(27) or key == 'q':
 		sys.exit()
@@ -122,6 +132,9 @@ def processNormalKeys(bkey, x, y):
 
 		accelVec.selfNormalize()
 		accelVec.self_scale(accel)
+		vel = accelVec
+		vel.Set_All(accelVec.GetX() / 4, accelVec.GetY() / 4, accelVec.GetZ() / 4)
+		# vel /= 100
 		AddBall(curRadius, stPt, vel, accelVec)
 	elif key == '1':
 		# print(cannonL)
@@ -141,6 +154,24 @@ def processNormalKeys(bkey, x, y):
 		curRadius += 0.2
 		if curRadius > maxRadius:
 			curRadius = maxRadius
+	elif key == 'k':
+		r = 600.0/3.0
+		xx += 4.0
+	elif key == 'i':
+		xx -= 4.0
+	elif key == 'n':
+		yy -= 0.5
+	elif key == 'm':
+		yy += 0.5
+	elif key == 'j':
+		zz += 4
+	elif key =='l':
+		zz -= 4
+	elif key == 'e':
+		xx = 0
+		yy = 0
+		zz = 10
+        
 
 def processSpecialKeys(key, x, y):
 	global angle1
@@ -183,7 +214,7 @@ def changeSize(w, h):
 	glMatrixMode(GL_MODELVIEW);
 
 def renderScene():
-	global target
+	global target, x, y, z
 	glEnable(GL_DEPTH_TEST)
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
@@ -191,7 +222,7 @@ def renderScene():
 
 	glLoadIdentity()
 
-	gluLookAt(0, 0, 10, 0, 0, 0, 0, 1, 0)
+	gluLookAt(xx, yy, zz, 0, 0, 0, 0, 1, 0)
 
 	glEnable(GL_LIGHTING)
 	glEnable(GL_LIGHT0)
