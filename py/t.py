@@ -133,7 +133,7 @@ def processNormalKeys(bkey, x, y):
 		accelVec.selfNormalize()
 		accelVec.self_scale(accel)
 		vel = accelVec
-		vel.Set_All(accelVec.GetX() / 4, accelVec.GetY() / 4, accelVec.GetZ() / 4)
+		vel.Set_All(accelVec.GetX() / 2, accelVec.GetY() / 2, accelVec.GetZ() / 2)
 		# vel /= 100
 		AddBall(curRadius, stPt, vel, accelVec)
 	elif key == '1':
